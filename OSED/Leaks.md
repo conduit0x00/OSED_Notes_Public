@@ -1,7 +1,7 @@
 ### API
 - dbghelp APIs
 ### Pivot From Any module -> All Imported modules
-- Get base module leak.
+- Get any module leak.
 - Find any gadgets accessing `[fs:x]` which you can use to leak PEB
 - Parse module list
 ### Format Strings
