@@ -147,7 +147,7 @@ buf += p32(gadget3)    # gadget 3 returns here and stack is ok
 For `call reg32`:
 ```python
 buf += p32(gadget1)    # pop reg32 ;
-buf += p32(gadget3)    # gadget2 returns here (may want to use a pure "ret" to avoid messing up stack)
+buf += p32(gadget3)    # gadget2 returns here, "pop;ret" is required (may want to use gadget1 again as a pure "pop;ret" to avoid messing up stack)
 buf += p32(gadget2)    # Gadget with "call reg32" ending
 buf += p32(gadget4)    # gadget3 returns here
 ```
@@ -157,7 +157,7 @@ For `call [reg32]`:
 buf += p32(gadget1)    # mov reg32_a, esp;
 buf += p32(gadget2)    # add reg32_a, 0x0c;
 buf += p32(gadget3)    # pop reg32_b; (we do this so that the raw address is skipped)
-buf += p32(gadget5)    # gadget4 returns here, requires pop ; ret ; ending (may want to use a pure "pop; ret" to avoid messing up stack)
+buf += p32(gadget5)    # gadget4 returns here, "pop;ret" is required (may want to use gadget3 again as a pure "pop; ret" to avoid messing up stack)
 buf += p32(gadget4)    # Gadget with "call [reg32_a]" ending
 buf += p32(gadget6)    # gadget5 returns here
 ``````
@@ -176,7 +176,7 @@ buf += p32(gadget1)    # mov reg32_a, esp;
 buf += p32(gadget2)    # add reg32_a, 0x0c;
 buf += p32(gadget3)    # pop reg32_b; (we do this so that the raw address is skipped)
 buf += p32(gadget5)    # gadget4 returns here (may want to use a pure "ret" to avoid messing up stack)
-buf += p32(gadget4)    # Gadget with "jmp [reg32]" ending
+buf += p32(gadget4)    # Gadget with "jmp [reg32_a]" ending
 buf += p32(gadget6)    # gadget5 returns here
 ```
 ## VirtualProtect PUSHAD Chain Example
