@@ -2,7 +2,6 @@ hub
 #shellcode #msfvenom #kali
 
 ## Get Stack
-If ChatGPT didn't lie
 ```x86
 E8 FB FF FF FF     ; call next
 58                 ; next: pop eax
