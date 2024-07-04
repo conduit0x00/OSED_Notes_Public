@@ -46,14 +46,6 @@ def u32(x):
     return struct.unpack('<I', x)
 ```
 ## Align stack
-
-```asm
-push esp; 
-pop eax; 
-add ax, [value]; 
-jmp eax;
-```
-or quick fix:
 ``` python
 ALIGN_STACK = b'\x83\xE4\xF0'   # and    esp,0xfffffff0
 ```
